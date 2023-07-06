@@ -1,32 +1,13 @@
 import { Lawn } from 'src/lawns/lawns.entity';
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, Column } from 'typeorm';
+
+interface Mix {
+  readonly percentage: number;
+  readonly lawn: Lawn;
+}
 
 @Entity('lawnMixes')
-export class LawnMixes {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column()
-  price: number;
-
-  @Column()
-  picture: string;
-
-  @Column()
-  seeding: string;
-
-  @Column()
-  name: string;
-  @ManyToOne(() => Lawn)
-  @JoinColumn([
-    { name: 'percentage', referencedColumnName: 'percentage' },
-    { name: 'lawn_id', referencedColumnName: 'lawn_id' },
-  ])
-  lawns: Lawn;
+export class LawnMixes extends Lawn {
+  @Column('jsonb')
+  mix: Mix[];
 }
