@@ -27,8 +27,9 @@ export class UserController {
     return this.repository.find();
   }
 
-  @Get('getUserById')
-  async practice() {
+  @Get('getUserById/:id')
+  async practice(@Param('id') id) {
+    console.log(id);
     return this.repository.find({
       where: { id: 3 },
     });

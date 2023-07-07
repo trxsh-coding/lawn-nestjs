@@ -7,8 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import ormConfigProd from 'config/orm.config.prod';
 import { UserModule } from './users/user.module';
 import { LawnModule } from './lawns/lawn.module';
-import { LawnMixes } from './lawns-mixes/lawns-mixes.entity';
 import { LawnMixesModule } from './lawns-mixes/lawn-mixes.module';
+import { FileModule } from './files/file.module';
 
 @Module({
   imports: [
@@ -25,6 +25,7 @@ import { LawnMixesModule } from './lawns-mixes/lawn-mixes.module';
     UserModule,
     LawnModule,
     LawnMixesModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],
